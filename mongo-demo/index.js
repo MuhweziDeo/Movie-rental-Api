@@ -60,16 +60,71 @@ console.log(result)
 // 	console.log(coursesFliter)
 
 // }
-async function getCourses(){
-	// logic operators
-	// or
-	// and
 
+// async function getCourses(){
+// 	// logic operators
+// 	// or
+// 	// and
+
+// 	// get all
+// 	const courses = await Course
+// 	.find()
+// 	.or([{author:'Mosh'},{isPublished:true}])
+// 	.and([])
+// 	console.log(courses);
+
+// 	// filter
+// 	const coursesFliter= await Course({author:'deee2'})
+// 	console.log(coursesFliter)
+
+// }
+
+// async function getCourses(){
+// 	// filter using regular expression
+
+// 	// get all
+// 	const courses = await Course
+// 	// starts with
+// 	.find({author:/^deee/})
+// 	// endwith
+// 	.find({author:/deee$/i})
+
+// 	// contains
+// .find({author:/.*deee.*/i})
+// 	console.log(courses);
+
+// 	// filter
+// 	const coursesFliter= await Course({author:'deee2'})
+// 	console.log(coursesFliter)
+
+// }
+
+
+// async function getCourses(){
+// 	//counting documents
+
+// 	// get all
+// 	const courses = await Course
+// 	.find()
+// 	.count()
+// 	console.log(courses);
+
+// 	// filter
+// 	const coursesFliter= await Course({author:'deee2'})
+// 	console.log(coursesFliter)
+
+// }
+
+async function getCourses(){
+	
+	//pagination
+	const pageNumber=2;
+	const pageSize=10;
 	// get all
 	const courses = await Course
 	.find()
-	.or([{author:'Mosh'},{isPublished:true}])
-	.and([])
+	.skip((pageNumber-1)*pageSize)
+	.limit(10)
 	console.log(courses);
 
 	// filter
@@ -77,5 +132,4 @@ async function getCourses(){
 	console.log(coursesFliter)
 
 }
-
 getCourses()
