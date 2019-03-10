@@ -36,9 +36,40 @@ console.log(result)
 // createCourse()
 
 // query data
+// async function getCourses(){
+
+// 	// eq (eqaul)
+// 	// ne (not equal)
+// 	// gt (greater than)
+// 	// gte (greater than or equal to)
+// 	// lt(less than)
+// 	// in
+// 	// nin
+
+
+// 	// get all
+// 	const courses = await Course
+// 	// .find().limit(10).sort({name:1}).select({name:1, tags:1})
+// 	// query using comparision operators
+// 	// .find({ price : { $gt:10 , $gte:10 } } )
+// 	find( { price: { $in: [2,5,6] } } )
+// 	console.log(courses);
+
+// 	// filter
+// 	const coursesFliter= await Course({author:'deee2'})
+// 	console.log(coursesFliter)
+
+// }
 async function getCourses(){
+	// logic operators
+	// or
+	// and
+
 	// get all
-	const courses = await Course.find().limit(10).sort({name:1}).select({name:1, tags:1})
+	const courses = await Course
+	.find()
+	.or([{author:'Mosh'},{isPublished:true}])
+	.and([])
 	console.log(courses);
 
 	// filter
