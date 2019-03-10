@@ -17,7 +17,7 @@ const server = http.createServer((req,res)=>{
 		res.end()
 	};
 
-	if(req.url==='api/courses'){
+	if(req.url=== 'api/courses'){
 		res.write('here');
 		res.end();
 	}
