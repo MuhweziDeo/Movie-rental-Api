@@ -46,13 +46,13 @@ app.post('/api/courses', (req,res) => {
 	res.send(course);
 });
 // routes params
-app.get('/api/courses/:id', (req,res) => { 
-	const course = courses.find(c => 
+app.get('/api/courses/:id', (req,res) => {
+	const course = courses.find(c =>
 	{
-		return c.id === parseInt(req.params.id) 
-	
+		return c.id === parseInt(req.params.id)
+
 	});
-	
+
 	if(!course) res.status(404).send('404');
 		res.send(course)
 
@@ -65,10 +65,10 @@ app.put('/api/courses/:id', (req,res) => {
 
 // find course
 	const course = courses.find(c => {
-			return c.id === parseInt(req.params.id) 
-		
+			return c.id === parseInt(req.params.id)
+
 	});
-		
+
 	if(!course) return res.status(404).send('404');
 
 	// // validate course
@@ -76,7 +76,7 @@ app.put('/api/courses/:id', (req,res) => {
 
 
 	if(error) return res.status(400).send(error.details[0].message)
-	
+
 	// update course
 	course.name=req.body.name;
 	res.send(course);
@@ -87,10 +87,10 @@ app.put('/api/courses/:id', (req,res) => {
 // delete
 app.delete('/api/courses/:id', (req,res) => {
 	const course = courses.find(c => {
-			return c.id === parseInt(req.params.id) 
-		
+			return c.id === parseInt(req.params.id)
+
 	});
-		
+
 	if(!course) return res.status(404).send('404');
 
 	const index =courses.indexOf(course);
@@ -108,13 +108,10 @@ const validateCourse =(course)=>{
 
 
 
-app.get('/api/courses/:year/:month', (req,res) => { 
+app.get('/api/courses/:year/:month', (req,res) => {
 res.send(req.params)
 
 })
-
-
-
 
 
 // port

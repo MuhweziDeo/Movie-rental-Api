@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/playground').
+mongoose.connect('mongodb://localhost/vidly').
 then(()=>{console.log('connected')})
 .catch(err=>console.log(err)); 
 
