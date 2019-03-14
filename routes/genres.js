@@ -4,9 +4,20 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 const admin = require('../middleware/admin');
 
-router.get('/', async (req, res) => {
-  const genres = await Genre.find().sort('name');
-  res.send(genres);
+
+function asyncMiddleware(handler){
+   
+}
+router.get('/', async (req, res, next) => {
+  try {
+    const genres = await Genre.find().sort('name');
+    res.send(genres);
+  } catch (ex) {
+    console.log(ex)
+    next(ex)
+    // res.status(500).send('Something Went Wrong on ther server') 
+  }
+
 });
 
 router.post('/', auth , async (req, res) => {
