@@ -5,7 +5,8 @@ const router = express.Router();
 const _ = require('lodash');
 const bcrypt=require('bcrypt');
 const Joi = require('joi')
-const jwt= require('jsonwebtoken');
+const config=require('config');
+
 
 const userValidator = (user) =>{
   const schema={
@@ -25,7 +26,7 @@ router.post('/login', async (req, res) => {
   console.log(validPassword)
 
   if(validPassword){
-    const token =jwt.sign({_id:user._id}, 'amsececcsccs')
+    const token =user.generateAuthToken();
     console.log(token);
     res.status(200).send({
       token:token,

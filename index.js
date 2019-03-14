@@ -6,6 +6,14 @@ const movies = require('./routes/movies');
 const express = require('express');
 const app = express();
 const auth=require('./routes/auth');
+const config= require('config');
+
+// console.log(config)
+// if(!config.get('secret')){
+//   console.log('Fatal error')
+//   process.exit(1);
+// }
+
 mongoose.connect('mongodb://localhost/vidly')
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Could not connect to MongoDB...'));

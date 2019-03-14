@@ -5,6 +5,7 @@ const router = express.Router();
 const _ = require('lodash');
 const bcrypt=require('bcrypt');
 const jwt= require('jsonwebtoken');
+
 router.post('/', async (req, res) => {
   const { error } = validate(req.body); 
   if (error) return res.status(400).send({message:
@@ -23,7 +24,9 @@ router.post('/', async (req, res) => {
         })
 
         const newUser= user.save()
-        res.send(_.pick(user,['id','name', 'email']));
+        const token =user.generateAuthToken();
+      
+        res.header('x-auth-token',token).send(_.pick(user,['id','name', 'email']),200);
     });
 });
 });
